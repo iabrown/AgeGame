@@ -17,24 +17,22 @@ const AgeGame = (props) => {
   //Define the message state for the guessing game
   const [guessMessage, setGuessMessage] = React.useState('');
 
-  const checkGuess = (event) => {
-    //Check if the guess is correct
-    console.log('Your guess is here.' + event);
-    if(event < age){
-      console.log('Your guess is too low. Try again...');
-      event.preventDefault();
-    }
-    if(event>age){
-      console.log('Your guess is high low. Try again...');
-    }
-    if(event == age){
-      console.log('You guessed correct');
-    }
-  }
 
   //Function to handle the guess submission. Use logic to check if the guess is correct.
   const handleGuess = (event) => {
-    checkGuess(event.target.guess.value);
+    let guessNum = event.target.guess.value;
+    if(guessNum < age){
+      console.log('too low');
+      event.target.guess.value='';
+    }
+    if(guessNum > age){
+      console.log('too high');
+      event.target.guess.value='';
+    }
+    if(guessNum == age){
+      console.log('you are right!');
+      event.target.guess.value='';
+    }
     event.preventDefault();
 
   }
