@@ -1,6 +1,7 @@
 import React from 'react';import './App.css';
 import Username from './components/Username';
 import ResetButton from './components/ResetButton';
+import AgeGame from './components/AgeGame';
 
 
 const App = () => {
@@ -46,6 +47,13 @@ const App = () => {
 
 
       <ResetButton userName={userName} onReset={resetUserName}/>
+
+      <br /><br /><br />
+      <br /><br /><br />
+      Lets start making the logic for the guessing game now.
+      <br /><br /><br />
+      <AgeGame userName={userName} />
+
     </div>
   );
 }
