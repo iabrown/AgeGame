@@ -1,7 +1,12 @@
 import React from 'react';
+import RandomNumber from './RandomNumber';
+import ResetButton from './ResetButton';
 
 const Username = (props) => {
 
+  const testProps=(event) => {
+    console.log('test props ok');
+  }
 
 
 
@@ -16,6 +21,10 @@ const Username = (props) => {
         <br /><br /><br />
 
       Your username is: {props.userName}
+
+      <br /><br /><br />
+      <ResetButton onReset={props.onReset}/>
+
 
     </div>
   );

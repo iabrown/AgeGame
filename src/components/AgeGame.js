@@ -1,15 +1,8 @@
 import React from 'react';
+import Difficulty from './Difficulty';
 import ResetButton from './ResetButton';
 
 const AgeGame = (props) => {
-  //Define the state of the difficulty
-  const [difficulty, setDifficulty] = React.useState(localStorage.getItem('difficulty') || '');
-
-  const difficultySelector = (event) => {
-    console.log(event.target.id);
-    setDifficulty(event.target.id);
-    localStorage.setItem('difficulty', event.target.id);
-  }
 
   //Define a randomly generated number
   var age = Math.floor(Math.random()*10+1);
@@ -39,8 +32,7 @@ const AgeGame = (props) => {
 
   //function to reset the level of difficulty
   const resetDifficulty = (event) => {
-    setDifficulty('');
-    localStorage.setItem('difficulty', '');
+    props.setDifficulty('');
   }
 
 
@@ -48,16 +40,13 @@ return(
   <div>
     Hello from the AgeGame. <br/><br/>
     Welcome to the game {props.userName}<br/><br/>
-    Select a difficulty: <br/><br/>
-    <button id="Easy" onClick={difficultySelector}>Easy</button>
-    <button id="Medium"  onClick={difficultySelector}>Medium</button>
-    <button id="Hard" onClick={difficultySelector}>Hard</button>
-
+    <Difficulty onSelect={props.selectDifficulty}/>
     <br/><br/>
 
-    Current difficulty selected: {difficulty}
+    Current difficulty selected: {props.difficulty}
     <br/>
     Random number generated to: {age}
+    <br />
 
     <br/><br/>
 
@@ -74,7 +63,7 @@ return(
     <br/><br/>
     <br/><br/>
 
-    <ResetButton onReset={resetDifficulty}/>
+    <ResetButton onReset={props.onReset}/>
 
   </div>
 );
